@@ -31,10 +31,44 @@ const handler = {
     greeting: function () {
         console.log(`Hola, ${this.name}`)
     },
-    arrowGreeting: () => { // en las funciones flecha no tienen su propio "this", ellas captura el this global(fuera del objeto) o "top level"
+    arrowGreeting: () => { // en Objetos las funciones flecha no tienen su propio "this", ellas captura el this global(fuera del objeto) o "top level"
         console.log(`Hola, ${this.name}`)
     }
 }
 
 handler.greeting() // Hola, Brais
 handler.arrowGreeting(); // Hola, undefined
+
+// IIFE (Expresión de Función Invocada Inmediatamente)
+
+(function () {
+    console.log("IIFE clásico")
+})();
+
+(() => {
+    console.log("IIFE con arrow function")
+})();
+
+// Parámetros Rest (...)
+
+function sum(...numbers) {
+    let result = 0
+    for (let number of numbers) {
+        result += number
+    }
+    return result
+}
+
+console.log(sum(1, 2, 3, 4, 5))
+console.log(sum(10, 15))
+
+
+// Operador Spread (...)
+
+const numbers = [1, 2, 3]
+function sumWithSpread(a, b, c) {
+    return a + b + c
+}
+
+console.log(sumWithSpread(1, 2, 3)) // Sin Spread
+console.log(sumWithSpread(...numbers)) // Con Spread
