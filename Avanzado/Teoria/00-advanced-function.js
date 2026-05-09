@@ -72,3 +72,38 @@ function sumWithSpread(a, b, c) {
 
 console.log(sumWithSpread(1, 2, 3)) // Sin Spread
 console.log(sumWithSpread(...numbers)) // Con Spread
+
+// Closures (Clausuras)
+
+function createCounter() {
+    let counter = 0;
+    return function () {
+        counter++;
+        console.log(`Contador: ${counter}`);
+    }    
+}
+
+const counter = createCounter();
+
+counter()
+counter()
+
+console.log("Si lo llamamos de nuevo, la funcion se reinicia :D")
+const counter2 = createCounter();
+
+counter2()
+counter2()
+
+// Otro ejemplo:
+
+function crearSaludador(prefijo) {
+    return function(nombre) {
+        console.log(`${prefijo}, ${nombre}`);
+    };
+}
+
+const saludarFormal = crearSaludador("Estimado");
+const saludarCopa = crearSaludador("¿Qué onda?");
+
+saludarFormal("Jasson"); // Estimado, Jasson
+saludarCopa("Jasson");   // ¿Qué onda?, Jasson
